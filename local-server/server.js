@@ -6,7 +6,7 @@ const app = express();
 // SENDS THE HTML PAGE TO THE CLIENT
 function getPage(req, res) {
 
-    res.sendFile("C:/Users/baalp/OneDrive/Bureau/interface/index.html");
+    res.sendFile(__dirname + "/index.html");
 
 }
 
