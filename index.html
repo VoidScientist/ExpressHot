@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoteloo</title>
+</head>
+<body>
+    <h1>Hoteloo</h1>
+
+    <p> Choose sorting algorithm : </p>
+
+    <select id="algorithm">
+        <option value="bubblesort">Bubble Sort</option>
+        <option value="insertionsort">Insertion Sort</option>
+        <option value="selectionsort">Selection Sort</option>
+    </select>
+
+    <input type="number" id="entries">
+
+    <button onclick="test()">Search</button>
+
+    <p id="results"></p>
+
+    <script> 
+
+    // WORST CODE EVER BUT KINDA WORKS
+    
+    const algorithm_menu = document.getElementById("algorithm");
+    const entries = document.getElementById("entries");
+    const results = document.getElementById("results");
+
+    async function test() { 
+
+        const data = await fetch(`http://localhost:4001/search/${algorithm_menu.value}?limit=${entries.value}`);
+
+        const json_ = await data.json();
+
+        const resp = json_.response;
+
+        results.textContent = "algorithm name: " + resp.name + " // " + "duration: " + resp.duration + " seconds. " + "best match: " + JSON.stringify(resp.result[0]);
+
+    }
+        
+    </script>
+
+</body>
+</html>
