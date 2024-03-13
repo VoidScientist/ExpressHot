@@ -28,6 +28,7 @@ body {
     margin: 0.3rem;
 
 }
+
 #sub-title{
 
     font-size: 0.8rem;
@@ -56,8 +57,11 @@ body {
 
     font-size: 1.5rem;
     font-style: italic;
-    
 
+}
+
+#algo-info {
+    text-align: center;
 }
 
 button{
