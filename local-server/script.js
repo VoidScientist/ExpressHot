@@ -53,7 +53,7 @@ async function getSortedHotels() {
         for (let amenity of amenityList){
 
             let newElement = document.createElement("li");
-            newElement.innerHTML += `${amenity}<br>`;
+            newElement.innerHTML += `${amenity}`;
             list.appendChild(newElement);
 
         }
