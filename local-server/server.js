@@ -13,6 +13,8 @@ function getPage(req, res) {
 // CALLS THE PYTHON SCRIPT TO GET RESULTS AND SENDS THEM TO CLIENT
 function getHotelSorted(req, res) {
 
+    res.set("Access-Control-Allow-Origin", "*");
+
     // ALLOWED ID PARAMS
     const algos = ["bubblesort", "insertionsort", "selectionsort"];
 
