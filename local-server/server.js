@@ -39,7 +39,7 @@ function getHotelSorted(req, res) {
     }
 
     // CREATE THE PYTHON SUBPROCESS
-    const python = spawn("python", ["./test.py"]);
+    const python = spawn("python", ["./algorithm.py"]);
 
     // GIVES ALGORITHM KEY TO SYS.STDIN.READ() IN PYTHON SCRIPT
     python.stdin.end(algorithm);
