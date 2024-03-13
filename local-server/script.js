@@ -10,12 +10,13 @@ async function getSortedHotels() {
 
     const hotelList = json_.result
 
-    for(let i = 0; i<hotelList.length; i++){
+    for(let i = 0; i< hotelList.length; i++){
 
         const hotel = hotelList[i];
         let newDiv = document.createElement("div");
         newDiv.setAttribute("class", "box")
 
+        // TODO: refactor duplicate code into a function
         let name = document.createElement("p");
         name.setAttribute("class", "name");
         name.style.margin = "4px 0px";
@@ -59,7 +60,6 @@ async function getSortedHotels() {
         }
 
         amenities.appendChild(list);
-
         newDiv.appendChild(amenities);
 
         newDiv.style.padding = "8px 12px";
