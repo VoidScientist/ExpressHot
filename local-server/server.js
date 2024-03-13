@@ -6,14 +6,23 @@ const app = express();
 // SENDS THE HTML PAGE TO THE CLIENT
 function getPage(req, res) {
 
-    res.sendFile(__dirname + "/index.html");
+    const files = ["index.html", "script.js", "style.css"];
+
+    const file = req.params.file;
+
+    if (!files.includes(file)) {
+        res.setStatus(404).send({msg:"file not found"});
+        return;
+    }
+
+    res.sendFile(__dirname + "/" + file);
 
 }
 
 // CALLS THE PYTHON SCRIPT TO GET RESULTS AND SENDS THEM TO CLIENT
 function getHotelSorted(req, res) {
 
-    res.set("Access-Control-Allow-Origin", "*");
+    console.log(req.connection.remoteAddress + " has sent a request.")
 
     // ALLOWED ID PARAMS
     const algos = ["bubblesort", "insertionsort", "selectionsort"];
@@ -42,7 +51,7 @@ function getHotelSorted(req, res) {
         for (let i of data.toString().split("\r\n")) {
             if (i == 0) {continue;}
             hotels.push(JSON.parse(i));
-        }
+        } 
     });
 
     
@@ -50,7 +59,7 @@ function getHotelSorted(req, res) {
     python.once("close", () => {
         // LIMIT RESULTS ACC TO QUERY STRING LIMIT
         hotels[0].result = hotels[0].result.slice(0,limit);
-        res.send( hotels[0] );
+        res.send(hotels[0]);
 });
 
 }
@@ -64,7 +73,7 @@ function setServerUp(){
 
 // WHAT FUNCTION TO CALL WHEN RECEIVING GET HTTP METHOD
 // AT SPECIFIC ENDPOINTS
-app.get("/", getPage);
+app.get("/:file", getPage);
 app.get("/search/:id", getHotelSorted);
 
 // STARTS THE SERVER
