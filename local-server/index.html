@@ -7,19 +7,27 @@
     <title>Hoteloo</title>
 </head>
 <body>
-    <h1>Hoteloo</h1>
+    <div class="title">
+        <p >ExpressHot</p>
+        <p id="sub-title">Because sorting algorithm are indeed hot</p>
+    </div>
 
-    <p> Choose sorting algorithm : </p>
+    <div class="selection-box">
 
-    <select id="algorithm">
-        <option value="bubblesort">Bubble Sort</option>
-        <option value="insertionsort">Insertion Sort</option>
-        <option value="selectionsort">Selection Sort</option>
-    </select>
+        <p class="chosing"> Choose sorting algorithm : </p>
 
-    <input type="number" id="entries">
+        <select id="algorithm">
+            <option value="bubblesort">Bubble Sort</option>
+            <option value="insertionsort">Insertion Sort</option>
+            <option value="selectionsort">Selection Sort</option>
+        </select>
 
-    <button onclick="getSortedHotels()">Search</button>
+        <input type="number" id="entries">
+
+        <button onclick="getSortedHotels()">Search</button>
+   
+    </div>
+
 
     <p id="algo-info"> </p>
 

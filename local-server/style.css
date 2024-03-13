@@ -1,5 +1,115 @@
 body {
 
     background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
 
 }
+
+.title{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    gap: 0;
+
+}
+
+.title p{
+
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Lucida Sans';
+    margin: 0.3rem;
+
+}
+#sub-title{
+
+    font-size: 0.8rem;
+    font-style: italic;
+    font-family: Helvetica, sans-serif;
+
+}
+
+.selection-box{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10vw;
+
+}
+
+.chosing{
+
+    font-size: 1.5rem;
+    font-style: italic;
+
+}
+
+button{
+
+    font-size: 2rem;
+    font-style: italic;
+    aspect-ratio: 1/1;
+    border: 2px solid ;
+    border-radius: 10%;
+    background: white;
+    
+
+}
+
+#results{
+
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 2vw;
+
+}
+
+
+.box{
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+    border: 3px solid;
+    width: 25vw;
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+    
+
+}
+
+.name{
+
+    font-size: 1.7rem;
+    font-family: serif;
+    font-style: italic;
+
+}
+
+.data{
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: oblique;
+}
+
+.data li{
+
+    list-style: none;
+    color: rgb(99, 9, 99);
+
+}
+
+
+
+
