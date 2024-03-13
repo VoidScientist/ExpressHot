@@ -54,7 +54,6 @@ function getHotelSorted(req, res) {
         } 
     });
 
-    
     // ONCE PYTHON PROCESS IS CLOSED, SEND DATA TO CLIENT
     python.once("close", () => {
         // LIMIT RESULTS ACC TO QUERY STRING LIMIT
