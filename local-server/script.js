@@ -5,7 +5,7 @@ const results = document.getElementById("results");
 async function getSortedHotels() { 
     
     const data = await fetch(`./search/${algorithm_menu.value}?limit=${entries.value}`); //192.168.60.32
-
+    
     const json_ = await data.json();
 
     const hotelList = json_.result
