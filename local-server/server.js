@@ -48,7 +48,7 @@ function getHotelSorted(req, res) {
     python.once("close", () => {
         // LIMIT RESULTS ACC TO QUERY STRING LIMIT
         hotels[0].result = hotels[0].result.slice(0,limit);
-        res.send({response: hotels[0]});
+        res.send( hotels[0] );
 });
 
 }
