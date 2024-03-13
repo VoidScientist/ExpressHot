@@ -5,7 +5,7 @@ const results = document.getElementById("results");
 async function getSortedHotels() { 
     
     const data = await fetch(`./search/${algorithm_menu.value}?limit=${entries.value}`); //192.168.60.32
-
+    
     const json_ = await data.json();
 
     const hotelList = json_.result
@@ -16,12 +16,13 @@ async function getSortedHotels() {
 
     results.textContent = `With the ${json_.name} algorithm, we've been able to sort the data in ${json_.duration} ms.`;
 
-    for(let i = 0; i<hotelList.length; i++){
+    for(let i = 0; i < hotelList.length; i++){
 
         const hotel = hotelList[i];
         let newDiv = document.createElement("div");
         newDiv.setAttribute("class", "box")
 
+        // TODO: refactor duplicate code into a function
         let name = document.createElement("p");
         name.setAttribute("class", "name");
         name.style.margin = "4px 0px";
@@ -64,13 +65,12 @@ async function getSortedHotels() {
         for (let amenity of amenityList){
 
             let newElement = document.createElement("li");
-            newElement.innerHTML += `${amenity}<br>`;
+            newElement.innerHTML += `${amenity}`;
             list.appendChild(newElement);
 
         }
 
         amenities.appendChild(list);
-
         newDiv.appendChild(amenities);
 
         newDiv.style.padding = "8px 12px";
