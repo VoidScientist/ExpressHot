@@ -27,8 +27,13 @@ function getHotelSorted(req, res) {
     // ALLOWED ID PARAMS
     const algos = ["bubblesort", "insertionsort", "selectionsort"];
 
-    // GET LIMIT FROM QUERY STRINGS
+    // GET QUERY STRINGS
     const limit = Number(req.query.limit) || 100;
+    const accPrice = Number(req.query.accPrice) || 150
+    const idealPrice = Number(req.query.idealPrice) || 100
+    const maxPrice = Number(req.query.maxPrice) || 300
+    const ratingImp = Number(req.query.ratingImp) || 1
+    const pref = JSON.parse(req.query.pref) || []
 
     const algorithm = req.params.id;
 
@@ -43,10 +48,22 @@ function getHotelSorted(req, res) {
     // CREATE THE PYTHON SUBPROCESS
     const python = spawn("python", ["./algorithm.py"]);
 
+
+    config = {
+        algorithm: algorithm,
+        accPrice: accPrice,
+        idealPrice: idealPrice,
+        maxPrice: maxPrice,
+        ratingImp: ratingImp,
+        pref: pref
+    }
+
     // GIVES ALGORITHM KEY TO SYS.STDIN.READ() IN PYTHON SCRIPT
-    python.stdin.end(algorithm);
+    python.stdin.end(JSON.stringify(config));
     
     var hotels = [];
+
+    python.stderr.on("data", err => console.error(err.toString()))
 
     // RETRIEVE ALL OUTPUTS OF SCRIPT INTO HOTELS
     python.stdout.on("data", data => {

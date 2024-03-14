@@ -2,6 +2,14 @@ from time import perf_counter
 import sys
 import json
 
+max_price = 300
+acceptable_price = 200
+ideal_price = 150
+preferred_amenities = []
+rating_importance = 1
+
+
+
 def clean_up_hotel(hotel):
     
     rating = hotel["hotel_rating"]
@@ -90,10 +98,26 @@ def parse_csv(filepath):
 
 
 def evaluate(hotel):
-    
-    price = int(hotel["price"])
 
-    return float(hotel["hotel_rating"]) / 5 * len(hotel["amenities"]) * (1-price/300)
+    price = float(hotel["price"])
+    
+    p_modifier = 1
+    if price > max_price:
+        p_modifier = 0
+    elif price > acceptable_price:
+        p_modifier = 0.8
+    elif price > ideal_price:
+        p_modifier: 1
+    else:
+        p_modifier: 1.2
+
+    a_modifier = 1
+    for amenity in hotel["amenities"]:
+        a_modifier += 0.2 * (amenity in preferred_amenities)
+
+    r_modifier = (float(hotel["hotel_rating"]) / 5) ** rating_importance
+
+    return r_modifier * a_modifier * p_modifier
 
 
 def get_key_score_pairs(array, key=None):
@@ -220,8 +244,16 @@ func = {
 # THIS IS PROBABLY BAD
 # BUT I DIDN'T HAVE ANOTHER WAY LMAO
 
-funcname = sys.stdin.read()
+serverdata = json.loads(sys.stdin.read())
 
-result = time_func(func[funcname], data, key=evaluate, reverse=True)
+alg = serverdata['algorithm'] or "selectionsort"
+max_price = serverdata['maxPrice'] or 300
+acceptable_price = serverdata['accPrice'] or 150
+ideal_price = serverdata['idealPrice'] or 100
+preferred_amenities = serverdata['pref'] or []
+
+print(serverdata, file=sys.stderr)
+
+result = time_func(func[alg], data, key=evaluate, reverse=True)
 
 print(json.dumps(result))
