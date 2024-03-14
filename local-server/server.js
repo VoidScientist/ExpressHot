@@ -52,9 +52,10 @@ function getHotelSorted(req, res) {
 
     // RETRIEVE ALL OUTPUTS OF SCRIPT INTO HOTELS
     python.stdout.on("data", data => {
+        console.log(lowerPrice, higherPrice);
         for (let i of data.toString().split("\r\n")) {
             if (i == 0) {continue;}
-            if (lowerPrice < Number(hotels["price"]) < higherPrice){
+            if (lowerPrice < Number(i.price) < higherPrice){
                 hotels.push(JSON.parse(i));
             }
         } 
