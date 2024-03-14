@@ -30,10 +30,6 @@ function getHotelSorted(req, res) {
     // GET LIMIT FROM QUERY STRINGS
     const limit = Number(req.query.limit) || 100;
 
-    const lowerPrice = Number(req.query.lower) || 0;
-
-    const higherPrice = Number(req.query.higher) || 1000;
-    
     const algorithm = req.params.id;
 
     // RETURN ERROR 404 IN CASE WRONG ID 
@@ -55,9 +51,9 @@ function getHotelSorted(req, res) {
         console.log(lowerPrice, higherPrice);
         for (let i of data.toString().split("\r\n")) {
             if (i == 0) {continue;}
-            if (lowerPrice < Number(i.price) < higherPrice){
-                hotels.push(JSON.parse(i));
-            }
+            
+            hotels.push(JSON.parse(i));
+            
         } 
     });
 
