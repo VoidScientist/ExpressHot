@@ -48,7 +48,7 @@ function getHotelSorted(req, res) {
 
     // RETRIEVE ALL OUTPUTS OF SCRIPT INTO HOTELS
     python.stdout.on("data", data => {
-        console.log(lowerPrice, higherPrice);
+        
         for (let i of data.toString().split("\r\n")) {
             if (i == 0) {continue;}
             
