@@ -2,6 +2,8 @@ const algorithm_menu = document.getElementById("algorithm");
 const entries = document.getElementById("entries");
 const infos = document.getElementById("algo-info");
 const results = document.getElementById("results");
+const lower = document.getElementById("lowerBound");
+const higher = document.getElementById("higherBound");
 
 
 function createElement(type, className, inner){
@@ -13,7 +15,7 @@ function createElement(type, className, inner){
 
 async function getSortedHotels() { 
     
-    const data = await fetch(`./search/${algorithm_menu.value}?limit=${entries.value}`); //192.168.60.32
+    const data = await fetch(`./search/${algorithm_menu.value}?limit=${entries.value}&lower=${lower.value}&higher=${higher.value}`); //192.168.60.32
     
     const json_ = await data.json();
 
@@ -59,11 +61,5 @@ async function getSortedHotels() {
         results.appendChild(newDiv);
 
     }
-
-}
-
-function toDocu(){
-
-    window.location.href("https://github.com")
 
 }
