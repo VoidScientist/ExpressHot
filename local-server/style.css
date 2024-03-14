@@ -71,9 +71,10 @@ a{
 
 }
 
-.chosing{
+.labels{
 
     font-size: 1.5rem;
+    text-align: center;
     font-style: italic;
 
 }
@@ -86,7 +87,16 @@ a{
 
 }
 
-#entries{
+#adv-search {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
+    justify-content: center;
+
+}
+
+.number-entries {
     font-size: 1.5rem;
     border: none;
     background-color: var(--bg-box);
@@ -101,13 +111,18 @@ a{
 
 }
 
+.mult-choice {
+
+    background-color: var(--bg-box);
+    font-size: 1.2rem;
+
+}
+
 button{
 
     font-size: 2rem;
     font-style: italic;
-    aspect-ratio: 1/1;
     border: 2px solid ;
-    border-radius: 10%;
     background: var(--bg-box);
     
 
@@ -164,6 +179,13 @@ button{
 ul{
     list-style: none;
     margin-left: 0;
+}
+
+.amenity {
+
+    margin: 0.2vh;
+    color: purple;
+
 }
 
 @media (width < 720px){

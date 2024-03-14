@@ -61,14 +61,14 @@ async function getSortedHotels() {
 
         const amenities = createElement("p", "data", "Amenities:");
 
-        let list = document.createElement("ul");
+        let list = document.createElement("div");
         list.setAttribute("class", "amenity-list");
 
         const amenityList = JSON.parse(hotel.amenities.replaceAll("'", '"'));
 
         for (let amenity of amenityList){
 
-            const listEl = createElement("li", "amenity", amenity);
+            const listEl = createElement("p", "amenity", amenity);
             list.appendChild(listEl);
 
         }

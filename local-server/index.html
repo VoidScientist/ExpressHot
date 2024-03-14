@@ -19,7 +19,7 @@
 
    
 
-    <p class="chosing"> Choose sorting algorithm : </p>
+    <label for="algorithm" class="labels"> Sorting Algorithm </label>
 
     <select id="algorithm">
         <option value="bubblesort">Bubble Sort</option>
@@ -27,69 +27,70 @@
         <option value="selectionsort">Selection Sort</option>
     </select>
 
-    <input type="number" id="entries" placeholder="Number of Hotels">
+    <label for="adv-search" class="labels">Advanced Search Options</label>
+    <div id="adv-search">
+        <input type="number" id="entries" placeholder="Number of Hotels" class="number-entries">
 
-    <input type="number" id="rating" placeholder="Importance of rating (0-2)">
-    <input type="number" id="max" placeholder="Max Price">
-    <input type="number" id="acc" placeholder="Acceptable Price">
-    <input type="number" id="ideal" placeholder="Ideal Price">
-
-    <div class='amenity-div'>
-        <p> Preferred Amenities: </p>
-        <select id="amenities-list" multiple>
-            <option value="Pool">Pool</option>
-            <option value="Golf Course">Golf Course</option>
-            <option value="Airport transportation">Airport transportation</option>
-            <option value="Children Activities (Kid / Family Friendly)">Children Activities (Kid / Family Friendly)</option>
-            <option value="Air conditioning">Air conditioning</option>
-            <option value="Shuttle Bus Service">Shuttle Bus Service</option>
-            <option value="Tennis Court">Tennis Court</option>
-            <option value="Pets Allowed ( Dog / Pet Friendly )">Pets Allowed ( Dog / Pet Friendly )</option>
-            <option value="Wheelchair Access">Wheelchair Access</option>
-            <option value="Refrigerator in room">Refrigerator in room</option>
-            <option value="Non-smoking hotel">Non-smoking hotel</option>
-            <option value="Laundry Service">Laundry Service</option>
-            <option value="Concierge">Concierge</option>
-            <option value="Minibar">Minibar</option>
-            <option value="Breakfast Available">Breakfast Available</option>
-            <option value="Paid Wifi">Paid Wifi</option>
-            <option value="Microwave">Microwave</option>
-            <option value="Restaurant">Restaurant</option>
-            <option value="Kitchenette">Kitchenette</option>
-            <option value="Dry Cleaning">Dry Cleaning</option>
-            <option value="Indoor pool">Indoor pool</option>
-            <option value="Electric vehicle charging station">Electric vehicle charging station</option>
-            <option value="Paid Internet">Paid Internet</option>
-            <option value="Ski-In / Ski-Out">Ski-In / Ski-Out</option>
-            <option value="Suites">Suites</option>
-            <option value="Business Centre with Internet Access">Business Centre with Internet Access</option>
-            <option value="Self-Serve Laundry">Self-Serve Laundry</option>
-            <option value="Kids pool">Kids pool</option>
-            <option value="Spa">Spa</option>
-            <option value="Room service">Room service</option>
-            <option value="Breakfast included">Breakfast included</option>
-            <option value="Smoking rooms available">Smoking rooms available</option>
-            <option value="Banquet Room">Banquet Room</option>
-            <option value="Free parking">Free parking</option>
-            <option value="Casino and Gambling">Casino and Gambling</option>
-            <option value="Meeting rooms">Meeting rooms</option>
-            <option value="Non-smoking rooms">Non-smoking rooms</option>
-            <option value="Bar/Lounge">Bar/Lounge</option>
-            <option value="Family Rooms">Family Rooms</option>
-            <option value="Accessible rooms">Accessible rooms</option>
-            <option value="Hot Tub">Hot Tub</option>
-            <option value="Sauna">Sauna</option>
-            <option value="Free High Speed Internet (WiFi)">Free High Speed Internet (WiFi)</option>
-            <option value="Conference Facilities">Conference Facilities</option>
-            <option value="Fitness Centre with Gym / Workout Room">Fitness Centre with Gym / Workout Room</option>
-            <option value="Public Wifi">Public Wifi</option>
-            <option value="Babysitting">Babysitting</option>
-            <option value="Outdoor pool">Outdoor pool</option>
-            <option value="Heated pool">Heated pool</option>
-            <option value="Free Internet">Free Internet</option>
-            <option value="Multilingual Staff">Multilingual Staff</option>
-        </select>
+        <input type="number" id="rating" placeholder="Importance of rating (0-2)" class="number-entries">
+        <input type="number" id="max" placeholder="Max Price" class="number-entries">
+        <input type="number" id="acc" placeholder="Acceptable Price" class="number-entries">
+        <input type="number" id="ideal" placeholder="Ideal Price" class="number-entries">
     </div>
+
+    <label for="amenities-list" class="labels"> Preferred Amenities </label>
+    <select id="amenities-list" class="mult-choice" multiple>
+        <option value="Pool">Pool</option>
+        <option value="Golf Course">Golf Course</option>
+        <option value="Airport transportation">Airport transportation</option>
+        <option value="Children Activities (Kid / Family Friendly)">Children Activities (Kid / Family Friendly)</option>
+        <option value="Air conditioning">Air conditioning</option>
+        <option value="Shuttle Bus Service">Shuttle Bus Service</option>
+        <option value="Tennis Court">Tennis Court</option>
+        <option value="Pets Allowed ( Dog / Pet Friendly )">Pets Allowed ( Dog / Pet Friendly )</option>
+        <option value="Wheelchair Access">Wheelchair Access</option>
+        <option value="Refrigerator in room">Refrigerator in room</option>
+        <option value="Non-smoking hotel">Non-smoking hotel</option>
+        <option value="Laundry Service">Laundry Service</option>
+        <option value="Concierge">Concierge</option>
+        <option value="Minibar">Minibar</option>
+        <option value="Breakfast Available">Breakfast Available</option>
+        <option value="Paid Wifi">Paid Wifi</option>
+        <option value="Microwave">Microwave</option>
+        <option value="Restaurant">Restaurant</option>
+        <option value="Kitchenette">Kitchenette</option>
+        <option value="Dry Cleaning">Dry Cleaning</option>
+        <option value="Indoor pool">Indoor pool</option>
+        <option value="Electric vehicle charging station">Electric vehicle charging station</option>
+        <option value="Paid Internet">Paid Internet</option>
+        <option value="Ski-In / Ski-Out">Ski-In / Ski-Out</option>
+        <option value="Suites">Suites</option>
+        <option value="Business Centre with Internet Access">Business Centre with Internet Access</option>
+        <option value="Self-Serve Laundry">Self-Serve Laundry</option>
+        <option value="Kids pool">Kids pool</option>
+        <option value="Spa">Spa</option>
+        <option value="Room service">Room service</option>
+        <option value="Breakfast included">Breakfast included</option>
+        <option value="Smoking rooms available">Smoking rooms available</option>
+        <option value="Banquet Room">Banquet Room</option>
+        <option value="Free parking">Free parking</option>
+        <option value="Casino and Gambling">Casino and Gambling</option>
+        <option value="Meeting rooms">Meeting rooms</option>
+        <option value="Non-smoking rooms">Non-smoking rooms</option>
+        <option value="Bar/Lounge">Bar/Lounge</option>
+        <option value="Family Rooms">Family Rooms</option>
+        <option value="Accessible rooms">Accessible rooms</option>
+        <option value="Hot Tub">Hot Tub</option>
+        <option value="Sauna">Sauna</option>
+        <option value="Free High Speed Internet (WiFi)">Free High Speed Internet (WiFi)</option>
+        <option value="Conference Facilities">Conference Facilities</option>
+        <option value="Fitness Centre with Gym / Workout Room">Fitness Centre with Gym / Workout Room</option>
+        <option value="Public Wifi">Public Wifi</option>
+        <option value="Babysitting">Babysitting</option>
+        <option value="Outdoor pool">Outdoor pool</option>
+        <option value="Heated pool">Heated pool</option>
+        <option value="Free Internet">Free Internet</option>
+        <option value="Multilingual Staff">Multilingual Staff</option>
+    </select>
     
     <button onclick="getSortedHotels()" class="search">Search</button>
 

@@ -104,11 +104,11 @@ def evaluate(hotel):
     if price > max_price:
         p_modifier = 0
     elif price > acceptable_price:
-        p_modifier = 0.8
+        p_modifier = 0.95
     elif price > ideal_price:
         p_modifier = 1
     else:
-        p_modifier = 1.2
+        p_modifier = 1.05
 
     a_modifier = 1
 
