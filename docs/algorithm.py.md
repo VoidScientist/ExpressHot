@@ -138,11 +138,27 @@ The only details to speak off here, is that we passed a keyword argument that is
 
 This allows to sort according to score, then restitute the result in right order using the keys from the original list.
 
-The following code snippet describes how we made the key-score pairs.
+The following code snippet describes how we made the key-score pairs. (as of last version, we now eliminates 0 scores from even being sorted)
 
 ```python
 def get_key_score_pairs(array, key=None):
-    return [[i, key(v)] if key else [i, v] for i, v in enumerate(array)]
+    
+    # establish [key, score] pairs, according to an optional key function.
+    if not key:
+
+        return [[i, v] for i, v in enumerate(array)]
+    
+    key_pairs = []
+
+    for i, v in enumerate(array):
+
+        score = key(v)
+
+        if score == 0: continue
+
+        key_pairs += [[i,score]] 
+        
+    return key_pairs
 ```
 
 ### Insertion Sort
@@ -241,21 +257,42 @@ def bubble_sort(array, key=None, reverse=False):
 
 ```python
 def evaluate(hotel):
-    
-    price = int(hotel["price"])
 
-    return float(hotel["hotel_rating"]) / 5 * len(hotel["amenities"]) * (1-price/300)
+    price = float(hotel["price"])
+    
+    p_modifier = 1
+
+    if price > max_price:
+        p_modifier = 0
+    elif price > acceptable_price:
+        p_modifier = 0.8
+    elif price > ideal_price:
+        p_modifier = 1
+    else:
+        p_modifier = 1.2
+
+    a_modifier = 1
+
+    # this lines transform the string list into a list, and strip its element of redundant space
+    # it's ugly, it's unreadable, yet, it is a hot-fix late at night, i'll clean it if
+    # there is a real need to it.
+    amenities = map(lambda x: x.strip(), hotel["amenities"][1:-1].replace("'", "").split(","))
+
+    for amenity in amenities:
+        a_modifier += 0.15 * (amenity in preferred_amenities)
+
+    r_modifier = (float(hotel["hotel_rating"]) / 5) ** rating_importance
+
+    return (r_modifier + a_modifier) * p_modifier
 ```
 
 This function takes an hotel object in, then makes a global score through multiplication using multiple criterias:
 
-- <u>ratings:</u> we take the rating then divide by 5, so that perfect score is a multiplier of 1. [$rating/5$]
-- <u>price:</u> make it so the score is inversely proportional to price. [$1-price/300$]
-- <u>amenities:</u> we multiply the score by the number of amenities.
+- <u>ratings:</u> we take the rating then divide by 5, so that perfect score is a multiplier of 1. It scales exponentially to rating importance [$(rating/5)^{importance}$]
+- <u>price:</u> there is a range of price modifier according to user preferences.
+- <u>amenities:</u> each wanted amenity adds a bonus of 0.15 to the amenity modifier. (default is 1 because it was used as multiplier before)
 
-This is not a good implementation as it really highlights amenities. But heh.
-
-*(at time of writing I still don't know if i'll pull an all-nighter trying to create a custom one)*
+*(Please do not mind the ugly line about making string list into list I patched it quickly as I wanted to sleep)*
 
 ## Execution Time
 
@@ -282,21 +319,15 @@ Before and after execution we use `perf_counter()` to deduce the duration it too
 ## Server Related Stuff
 
 ```python
-func = {
+serverdata = json.loads(sys.stdin.read())
 
-    "insertionsort": insertion_sort,
-    "bubblesort": bubble_sort,
-    "selectionsort": selection_sort
+alg = serverdata['algorithm'] or "selectionsort"
+max_price = serverdata['maxPrice'] or 300
+acceptable_price = serverdata['accPrice'] or 150
+ideal_price = serverdata['idealPrice'] or 100
+preferred_amenities = serverdata['pref'] or []
 
-}
-
-# CODE RELATED TO THE SERVER
-# THIS IS PROBABLY BAD
-# BUT I DIDN'T HAVE ANOTHER WAY LMAO
-
-funcname = sys.stdin.read()
-
-result = time_func(func[funcname], data, key=evaluate, reverse=True)
+result = time_func(func[alg], data, key=evaluate, reverse=True)
 
 print(json.dumps(result))
 ```

@@ -9,7 +9,6 @@ preferred_amenities = []
 rating_importance = 1
 
 
-
 def clean_up_hotel(hotel):
     
     rating = hotel["hotel_rating"]
@@ -107,9 +106,9 @@ def evaluate(hotel):
     elif price > acceptable_price:
         p_modifier = 0.8
     elif price > ideal_price:
-        p_modifier: 1
+        p_modifier = 1
     else:
-        p_modifier: 1.2
+        p_modifier = 1.2
 
     a_modifier = 1
 
