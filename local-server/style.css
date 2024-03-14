@@ -1,13 +1,37 @@
+:root{
+    --bg : rgb(50,50,50);
+    --text-color : rgb(232, 209, 235);
+    --bg-box : rgb(233, 233, 233);
+}   
+
+html{
+    color : var(--text-color);
+}
+
 body {
 
-    background-color: whitesmoke;
+    background-color: var(--bg);
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 5vh;
     margin-left: 5vw;
     margin-right: 5vw;
+    margin-top: 0;
 
+}
+
+#docu{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-style: normal;
+}
+
+a{
+    text-decoration: none;
 }
 
 .title{
@@ -23,17 +47,16 @@ body {
 .title p{
 
     text-align: center;
-    font-size: 2rem;
-    font-family: 'Lucida Sans';
-    margin: 0.3rem;
-
+    font-size: 2.5rem;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin:0.1rem;
 }
 
 #sub-title{
 
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-style: italic;
-    font-family: Helvetica, sans-serif;
+    font-family: Georgia, sans-serif;
 
 }
 
@@ -42,7 +65,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10vw;
+    gap: 7vw;
+    flex-wrap: wrap;
 
 }
 
@@ -57,11 +81,23 @@ body {
 
     font-size: 1.5rem;
     font-style: italic;
+    background-color: var(--bg-box);
+
+}
+
+#entries{
+    font-size: 1.5rem;
+    border: none;
+    background-color: var(--bg-box);
 
 }
 
 #algo-info {
     text-align: center;
+    font-size: 1.3rem;
+    font-family: Geneva, Tahoma, sans-serif;
+    font-style: italic;
+    text-decoration: underline;
 }
 
 button{
@@ -71,13 +107,14 @@ button{
     aspect-ratio: 1/1;
     border: 2px solid ;
     border-radius: 10%;
-    background: white;
+    background: var(--bg-box);
     
 
 }
 
 #results{
 
+    color: black;
     display: flex;
     justify-content: center;
     max-width: 100%;
@@ -94,9 +131,10 @@ button{
     flex-direction: column;
     gap: 2vh;
     border: 3px solid;
-    width: 25vw;
-    text-align: left;
-    background-color: rgb(255, 255, 255);
+    max-width: 25vw;
+    min-width: 250px;
+    text-align: center;
+    background-color: var(--bg-box);
     padding: 0.5vw;
 
 }
@@ -121,6 +159,22 @@ button{
     color: rgb(99, 9, 99);
 
 }
+
+.amenities-list{
+
+    list-style: none;
+    margin: 0;
+}
+
+@media (width < 720px){
+    #docu{
+        font-size: 1rem;
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+    }
+}
+
+
 
 
 

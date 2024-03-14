@@ -61,3 +61,9 @@ async function getSortedHotels() {
     }
 
 }
+
+function toDocu(){
+
+    window.location.href("https://github.com")
+
+}
