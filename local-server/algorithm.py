@@ -136,7 +136,6 @@ def insertion_sort(array, key=None, reverse=False):
     return result[::-1] if reverse else result
 
 
-# TODO: do the key pairs values at first iteration then cache.
 def bubble_sort(array, key=None, reverse=False):
     
     pairs = get_key_score_pairs(array, key=key)

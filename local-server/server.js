@@ -34,8 +34,10 @@ function getHotelSorted(req, res) {
 
     // RETURN ERROR 404 IN CASE WRONG ID 
     if (!algos.includes(algorithm)) {
+
         res.json({status:"404", msg:"algorithm not found."});
         return;
+        
     }
 
     // CREATE THE PYTHON SUBPROCESS
@@ -50,11 +52,13 @@ function getHotelSorted(req, res) {
     python.stdout.on("data", data => {
         
         for (let i of data.toString().split("\r\n")) {
+
             if (i == 0) {continue;}
             
             hotels.push(JSON.parse(i));
             
         } 
+
     });
 
     // ONCE PYTHON PROCESS IS CLOSED, SEND DATA TO CLIENT
