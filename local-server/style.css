@@ -1,7 +1,7 @@
 :root{
     --bg : rgb(50,50,50);
     --text-color : rgb(251, 219, 255);
-    --bg-box : rgb(255, 195, 225);
+    --bg-box : rgb(209, 209, 209);
 }   
 
 html{
@@ -131,7 +131,7 @@ button{
     align-items: center;
     flex-direction: column;
     gap: 2vh;
-    border: 3px solid;
+    border: 3px solid rgb(0, 0, 0);
     max-width: 25vw;
     min-width: 250px;
     text-align: center;

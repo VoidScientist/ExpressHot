@@ -29,6 +29,10 @@ function getHotelSorted(req, res) {
 
     // GET LIMIT FROM QUERY STRINGS
     const limit = Number(req.query.limit) || 100;
+
+    const lowerPrice = Number(req.query.lower) || 0;
+
+    const higherPrice = Number(req.query.higher) || 1000;
     
     const algorithm = req.params.id;
 
@@ -50,7 +54,9 @@ function getHotelSorted(req, res) {
     python.stdout.on("data", data => {
         for (let i of data.toString().split("\r\n")) {
             if (i == 0) {continue;}
-            hotels.push(JSON.parse(i));
+            if (lowerPrice <= hotels["price"] <= higherPrice){
+                hotels.push(JSON.parse(i));
+            }
         } 
     });
 
