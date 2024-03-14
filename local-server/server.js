@@ -1,5 +1,5 @@
 const express = require("express");
-const {spawn} = require("child_process")
+const {spawn} = require("child_process");
 
 const app = express();
 
@@ -11,7 +11,7 @@ function getPage(req, res) {
     const file = req.params.file;
 
     if (!files.includes(file)) {
-        res.setStatus(404).send({msg:"file not found"});
+        res.send({msg:"file not found"});
         return;
     }
 
@@ -33,7 +33,7 @@ function getHotelSorted(req, res) {
     const idealPrice = Number(req.query.idealPrice) || 100
     const maxPrice = Number(req.query.maxPrice) || 300
     const ratingImp = Number(req.query.ratingImp) || 1
-    const pref = JSON.parse(req.query.pref) || []
+    const pref = req.query.pref || []
 
     const algorithm = req.params.id;
 

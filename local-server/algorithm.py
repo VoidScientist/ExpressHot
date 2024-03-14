@@ -112,19 +112,38 @@ def evaluate(hotel):
         p_modifier: 1.2
 
     a_modifier = 1
-    for amenity in hotel["amenities"]:
-        a_modifier += 0.2 * (amenity in preferred_amenities)
+
+    # this lines transform the string list into a list, and strip its element of redundant space
+    # it's ugly, it's unreadable, yet, it is a hot-fix late at night, i'll clean it if
+    # there is a real need to it.
+    amenities = map(lambda x: x.strip(), hotel["amenities"][1:-1].replace("'", "").split(","))
+
+    for amenity in amenities:
+        a_modifier += 0.15 * (amenity in preferred_amenities)
 
     r_modifier = (float(hotel["hotel_rating"]) / 5) ** rating_importance
 
-    return r_modifier * a_modifier * p_modifier
+    return (r_modifier + a_modifier) * p_modifier
 
 
 def get_key_score_pairs(array, key=None):
     
     # establish [key, score] pairs, according to an optional key function.
+    if not key:
+
+        return [[i, v] for i, v in enumerate(array)]
     
-    return [[i, key(v)] if key else [i, v] for i, v in enumerate(array)]
+    key_pairs = []
+
+    for i, v in enumerate(array):
+
+        score = key(v)
+
+        if score == 0: continue
+
+        key_pairs += [[i,score]] 
+        
+    return key_pairs
 
 
 def insertion_sort(array, key=None, reverse=False):
@@ -251,8 +270,6 @@ max_price = serverdata['maxPrice'] or 300
 acceptable_price = serverdata['accPrice'] or 150
 ideal_price = serverdata['idealPrice'] or 100
 preferred_amenities = serverdata['pref'] or []
-
-print(serverdata, file=sys.stderr)
 
 result = time_func(func[alg], data, key=evaluate, reverse=True)
 

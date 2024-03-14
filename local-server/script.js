@@ -3,6 +3,12 @@ const entries = document.getElementById("entries");
 const infos = document.getElementById("algo-info");
 const results = document.getElementById("results");
 
+const preferredAmenities = document.getElementById("amenities-list");
+const maxPrice = document.getElementById("max");
+const idealPrice = document.getElementById("ideal");
+const accPrice = document.getElementById("acc");
+const ratingImp = document.getElementById("rating");
+
 function createElement(type, className, inner){
     const element = document.createElement(type);
     element.setAttribute("class", className);
@@ -11,8 +17,24 @@ function createElement(type, className, inner){
 }
 
 async function getSortedHotels() { 
-    
-    const data = await fetch(`./search/${algorithm_menu.value}?limit=${entries.value}`); //192.168.60.32
+
+    const limit = entries.value || "100";
+    const maxP = maxPrice.value || "300";
+    const idealP = idealPrice.value || "100";
+    const accP = accPrice.value || "150";
+    const ratingImportance = ratingImp.value || "1";
+
+    let amenityQuery = "";
+
+    for (let option of preferredAmenities.options) {
+        if (option.selected){
+            amenityQuery += "pref="+option.text.replaceAll(" ", "%20")+"&";
+        }
+    }
+
+    const data = await fetch(
+        `./search/${algorithm_menu.value}?limit=${limit}&&maxPrice=${maxP}&&idealPrice=${idealP}&&accPrice=${accP}&&ratingImp=${ratingImportance}&&${amenityQuery}`
+        );
     
     const json_ = await data.json();
 
