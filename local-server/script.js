@@ -19,11 +19,9 @@ async function getSortedHotels() {
 
     const hotelList = json_.result;
 
-    const oldData = document.getElementsByClassName("box");
+    while (results.firstElementChild) {results.removeChild(results.lastElementChild);}
 
-    for(let old of oldData){old.remove();};
-
-    infos.textContent = `With the ${json_.name} algorithm, we've been able to sort the data in ${json_.duration} ms.`;
+    infos.textContent = `With the '${json_.name.replaceAll("_"," ")}' algorithm, we've been able to sort the data in ${json_.duration} ms.`;
 
     for(let i = 0; i < hotelList.length; i++){
 
@@ -34,14 +32,7 @@ async function getSortedHotels() {
         const name = createElement("p", "name", hotel.hotel_name);
         newDiv.appendChild(name);
 
-        if (hotel.address != " "){
-
-            const address = createElement("p", "data", "Address: " + hotel.address);
-            newDiv.appendChild(address);
-
-        }
-
-        const price = createElement("p", "data", "Price: " + hotel.price)
+        const price = createElement("p", "data", "Price: " + hotel.price + "$")
         newDiv.appendChild(price);
 
         const rating = createElement("p", "data", "Rating: " + hotel.hotel_rating);

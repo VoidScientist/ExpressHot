@@ -44,8 +44,6 @@ def get_fitting_key(value, dic):
 
 
 def get_hotel_info(keys, line):
-    hotel_infos = {}
-
     string = False
 
     elements = []
@@ -93,17 +91,9 @@ def parse_csv(filepath):
 
 def evaluate(hotel):
     
-    if int(hotel["price"]) < 100:
+    price = int(hotel["price"])
 
-        p_score = 1.2
-        
-    elif int(hotel["price"]) < 150:
-        p_score = 1.1
-        
-    else:
-        p_score = 1
-
-    return float(hotel["hotel_rating"]) / 5 * len(hotel["amenities"]) * p_score
+    return float(hotel["hotel_rating"]) / 5 * len(hotel["amenities"]) * (1-price/300)
 
 
 def get_key_score_pairs(array, key=None):
