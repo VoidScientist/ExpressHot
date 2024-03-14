@@ -149,6 +149,8 @@ def insertion_sort(array, key=None, reverse=False):
     
     pairs = get_key_score_pairs(array, key=key)
 
+    if not pairs: return []
+
     for i in range(1, len(pairs)):
         
         if pairs[i][1] < pairs[i - 1][1]:
@@ -181,6 +183,8 @@ def insertion_sort(array, key=None, reverse=False):
 def bubble_sort(array, key=None, reverse=False):
     
     pairs = get_key_score_pairs(array, key=key)
+
+    if not pairs: return []
 
     i = 0
     changed = False
@@ -218,6 +222,8 @@ def bubble_sort(array, key=None, reverse=False):
 def selection_sort(array, key=None, reverse=False):
     
     pairs = get_key_score_pairs(array, key=key)
+
+    if not pairs: return []
     
     for i in range(len(pairs)):
         
