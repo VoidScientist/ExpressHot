@@ -17,7 +17,7 @@ body {
     gap: 5vh;
     margin-left: 5vw;
     margin-right: 5vw;
-    margin-top: 0;
+    margin-top: 10px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 
 }
@@ -48,7 +48,7 @@ a{
 .title p{
 
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-family:Georgia, 'Times New Roman', Times, serif;
     margin:0.1rem;
 }
@@ -185,6 +185,12 @@ ul{
 
     margin: 0.2vh;
     color: purple;
+
+}
+
+button:active{
+
+    background-color: rgb(100,100,100);
 
 }
 
