@@ -12,7 +12,7 @@ But it also highlighted lots of shortcomings:
 
 Still better than TKinter tho.
 
-# Group Members :
+# Group Members
 
 - Raphaël KERVAON
 - Rémi PICHOT
