@@ -11,3 +11,10 @@ But it also highlighted lots of shortcomings:
 - functions need to be more separated
 
 Still better than TKinter tho.
+
+# Group Members :
+
+- Raphaël KERVAON
+- Rémi PICHOT
+- Théo VOREAUX
+- Louis ARCELON
